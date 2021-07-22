@@ -1,0 +1,35 @@
+<div style="text-align:center" style="padding-top: 70px;">
+    <h3 class="text-center">
+      INVOICE
+    </h3>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <p class="text-success"><b>Default Configurations</b></p>
+      <li *ngFor = " let std of notConfigured ">
+        {{std}}
+      </li>
+  </div>
+  <div class="col-md-4">
+    <p class="text-success"><b>Configured By You</b></p>
+      <li *ngFor = " let std of configured ">
+        {{std}}
+      </li>
+  </div>
+  <div class="col-md-4">
+    <p class="text-success"><b>Your Details</b></p>
+    <li>Company Name : {{customer.company_name}}</li>
+    <li>Representative Name : {{customer.customer_name}}</li>
+    <li>Representative Designation : {{customer.designation}}</li>
+    <li>Company Email ID : {{customer.email_id}}</li>
+    <li><span>Company Address :  {{customer.address_line_1}} , {{customer.address_line_2}}, {{customer.city}} = {{customer.pincode}}, {{customer.state}}</span></li>
+    <li>Company Telephone Number : {{customer.company_tel}}</li>
+  </div>
+</div>
+<div style="text-align:center"  style="margin-top:20px;">
+  <h5 class="text-center">
+    Final Price : {{finalPrice | currency:'INR':true}}
+  </h5>
+</div>
+<br><br><br><br><br>

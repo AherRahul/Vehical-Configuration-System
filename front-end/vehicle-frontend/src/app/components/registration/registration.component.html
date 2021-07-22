@@ -1,0 +1,143 @@
+
+<div class="container" style="padding-top: 70px">
+    <h2 class="text-center">Register Here</h2>
+  
+  <form #f="ngForm" name="formWorkout" (ngSubmit)="onSubmit(f.form)" class="row" novalidate>
+
+  <div id="Company-data" class="col-sm-12 Company-data">
+    <div class="form-group row">
+        <label for="Company-name">Company Name:</label>
+        <input type="text" name="cname" #cname="ngModel" class="form-control" id="Company-cname" [(ngModel)]="registrationdata.company_name" required #spy>
+        <label *ngIf="cname.control.hasError('required') && (cname.touched||submitted)" class="alert alert-danger extended-validation-message">Company Name is mandatory</label>
+        
+    </div>
+
+    <div class="form-group row">
+        <label for="Company-loginid">Login Id:</label>
+        <input type="text" name="cloginid" #cloginid="ngModel" class="form-control" id="Company-cloginid" [(ngModel)]="registrationdata.login_id" required #spy>
+        <label *ngIf="cloginid.control.hasError('required') && (cloginid.touched||submitted)" class="alert alert-danger extended-validation-message">Login ID is mandatory!</label>
+        <!--<label *ngIf="cloginid.control.hasError('pattern') && (cloginid.touched||submitted)" class="alert alert-danger extended-validation-message">The Emp should have atleast 2 digit id!</label> -->
+    </div>
+
+    <div class="form-group row">
+        <label for="Company-password">Password:</label>
+        <input type="text" name="cpassword" #cpassword="ngModel" class="form-control" id="Company-cpassword" [(ngModel)]="registrationdata.password" pattern="[0-9]{2,3}" required #spy>
+        <label *ngIf="cpassword.control.hasError('required') && (cpassword.touched||submitted)" class="alert alert-danger extended-validation-message">Password is mandatory</label>
+        <label *ngIf="cpassword.control.hasError('pattern') && (cpassword.touched||submitted)" class="alert alert-danger extended-validation-message">Enter a valid password</label>
+    </div>
+
+    <div class="form-group row">
+        <label for="Company-cnf">Confirm Password:</label>
+        <input type="text" name="cnf" #cnf="ngModel" class="form-control" id="Company-cnf" pattern="[0-9]{2,3}" [(ngModel)]="confirmpassword" (input)="validate()" required #spy>
+        <label *ngIf="cnf.control.hasError('required') && (cnf.touched||submitted)" class="alert alert-danger extended-validation-message">Password Confirmation is mandatory</label>
+        <label *ngIf="cnf.touched && validatepassword" class="alert alert-danger extended-validation-message">Password does not match</label>
+    </div>
+    
+    <div class="form-group row">
+        <label for="Customer-name">Customer Name:</label>
+        <input type="text" name="custname" #custname="ngModel" class="form-control" id="Customer-cname" [(ngModel)]="registrationdata.customer_name" pattern="[A-Za-z]" required #spy>
+        <label *ngIf="custname.control.hasError('required') && (custname.touched||submitted)" class="alert alert-danger extended-validation-message">Company Name is mandatory</label>
+        <label *ngIf="cname.control.hasError('pattern') && (custname.touched||submitted)" class="alert alert-danger extended-validation-message">The Emp should have atleast 2 digit id!</label>
+    </div>
+
+    <div class="form-group row">
+        <label for="Company-designation">Designation:</label>
+        <input type="text" name="cdesignation" #cdesignation="ngModel" class="form-control" id="Company-designation" [(ngModel)]="registrationdata.designation">
+    </div>
+
+    <div class="form-group row">
+        <label for="Company-email">Email ID:</label>
+        <input type="email" name="cemail" #cemail="ngModel" class="form-control" id="Company-email" [(ngModel)]="registrationdata.email_id"  required #spy>
+        <label *ngIf="cemail.control.hasError('required') && (cemail.touched||submitted)" class="alert alert-danger extended-validation-message">Email is mandatory</label>
+        <label *ngIf="cemail.control.hasError('pattern') && (cemail.touched||submitted)" class="alert alert-danger extended-validation-message">Enter a valid Email</label>
+    </div>
+
+    <div class="form-group row">
+        <label for="Company-adr1">Address Line One:</label>
+        <input type="text" name="cadr1" #cadr1="ngModel" class="form-control" id="Company-adr1" [(ngModel)]="registrationdata.address_line_1" required #spy>
+        <label *ngIf="cadr1.control.hasError('required') && (cadr1.touched||submitted)" class="alert alert-danger extended-validation-message">Address is mandatory</label>
+    </div>
+
+    <div class="form-group row">
+        <label for="Company-adr2">Address Line Two:</label>
+        <input type="text" name="cadr2" #cadr2="ngModel" class="form-control" id="Company-adr2" [(ngModel)]="registrationdata.address_line_2" #spy>
+    </div>
+
+    <div class="form-group row">
+        <label for="Company-city">City:</label>
+        <input type="text" name="ccity" #ccity="ngModel" class="form-control" id="Company-city" [(ngModel)]="registrationdata.city" required #spy>
+        <label *ngIf="ccity.control.hasError('required') && (ccity.touched||submitted)" class="alert alert-danger extended-validation-message">City is mandatory</label>
+    </div>
+
+    <div class="form-group row">
+        <label for="Company-state">State:</label>
+        <input type="text" name="cstate" #cstate="ngModel" class="form-control" id="Company-state" [(ngModel)]="registrationdata.state"  required #spy>
+        <label *ngIf="cstate.control.hasError('required') && (cstate.touched||submitted)" class="alert alert-danger extended-validation-message">State is mandatory</label>
+    </div>
+
+    <div class="form-group row">
+        <label for="Company-pin">PIN Code:</label>
+        <input type="text" name="cpin" #cpin="ngModel" class="form-control" id="Company-pin" [(ngModel)]="registrationdata.pincode" pattern="[0-9]{2,3}" required #spy>
+        <label *ngIf="cpin.control.hasError('required') && (cpin.touched||submitted)" class="alert alert-danger extended-validation-message">PIN Code is mandatory</label>
+        <label *ngIf="cpin.control.hasError('pattern') && (cpin.touched||submitted)" class="alert alert-danger extended-validation-message">Enter a valid PIN Code.</label>
+    </div>
+
+    <div class="form-group row">
+        <label for="Company-tel">Company Telephone:</label>
+        <input type="text" name="ctel" #ctel="ngModel" class="form-control" id="Company-tel" [(ngModel)]="registrationdata.company_tel" pattern="[0-9]{2,3}" required #spy>
+        <label *ngIf="ctel.control.hasError('required') && (ctel.touched||submitted)" class="alert alert-danger extended-validation-message">Company Telephone is mandatory</label>
+        <label *ngIf="ctel.control.hasError('pattern') && (ctel.touched||submitted)" class="alert alert-danger extended-validation-message">Enter a valid number</label>
+    </div>
+
+    <div class="form-group row">
+        <label for="Company-fax">Company FAX:</label>
+        <input type="text" name="cfax" #cfax="ngModel" class="form-control" id="Company-fax" [(ngModel)]="registrationdata.company_fax" pattern="[0-9]{10}" required #spy>
+        <label *ngIf="cfax.control.hasError('required') && (cfax.touched||submitted)" class="alert alert-danger extended-validation-message">FAX is mandatory</label>
+        <label *ngIf="cfax.control.hasError('pattern') && (cfax.touched||submitted)" class="alert alert-danger extended-validation-message">Enter Valid Fax</label>
+    </div>
+
+    <div class="form-group row">
+        <label for="Company-holding">Holding:</label>
+        <input type="text" name="cholding" #cholding="ngModel" class="form-control" id="Company-holding" [(ngModel)]="registrationdata.holding" required #spy>
+        <label *ngIf="cholding.control.hasError('required') && (cholding.touched||submitted)" class="alert alert-danger extended-validation-message">This field is mandatory</label>
+    </div>
+
+    <div class="form-group row">
+        <label for="Customer-tel">Customer Telephone:</label>
+        <input type="text" name="custtel" #custtel="ngModel" class="form-control" id="Customer-tel" [(ngModel)]="registrationdata.customer_tel" pattern="[0-9]{10}" required #spy>
+        <label *ngIf="custtel.control.hasError('required') && (custtel.touched||submitted)" class="alert alert-danger extended-validation-message">Customer Telephone is mandatory</label>
+        <label *ngIf="custtel.control.hasError('pattern') && (custtel.touched||submitted)" class="alert alert-danger extended-validation-message">Enter a valid Telephone number</label>
+    </div>
+
+    <div class="form-group row">
+        <label for="Customer-mob">Customer Mobile:</label>
+        <input type="text" name="custmob" #custmob="ngModel" class="form-control" id="Customer-mob" [(ngModel)]="registrationdata.customer_mob" pattern="[0-9]{10}" required #spy>
+        <label *ngIf="custmob.control.hasError('required') && (custmob.touched||submitted)" class="alert alert-danger extended-validation-message">Customer Mobile is mandatory</label>
+        <label *ngIf="custmob.control.hasError('pattern') && (custmob.touched||submitted)" class="alert alert-danger extended-validation-message">Enter a valid Mobile number</label>
+    </div>
+
+    <div class="form-group row">
+        <label for="Company-vat">VAT Number:</label>
+        <input type="text" name="cvat" #cvat="ngModel" class="form-control" id="Company-vat" [(ngModel)]="registrationdata.vat_no" pattern="[0-9]{2,3}" required #spy>
+        <label *ngIf="cvat.control.hasError('required') && (cvat.touched||submitted)" class="alert alert-danger extended-validation-message">VAT Number is mandatory</label>
+        <label *ngIf="cvat.control.hasError('pattern') && (cvat.touched||submitted)" class="alert alert-danger extended-validation-message">Enter a valid VAT</label>
+    </div>
+
+    <div class="form-group row">
+        <label for="Company-pan">PAN:</label>
+        <input type="text" name="cpan" #cpan="ngModel" class="form-control" id="Company-pan" [(ngModel)]="registrationdata.pan_no" required #spy>
+        <label *ngIf="cpan.control.hasError('required') && (cpan.touched||submitted)" class="alert alert-danger extended-validation-message">PAN Number is mandatory</label>
+        <label *ngIf="cpan.control.hasError('pattern') && (cpan.touched||submitted)" class="alert alert-danger extended-validation-message">Enter a valid PAN</label>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <p class="text-center"><button type="submit" class="btn btn-primary text-center" style="padding: 6px 50px;
+        font-size: 20px;">Save</button></p>
+      </div>
+    </div>
+
+  </div>
+  </form>
+    
+</div>
